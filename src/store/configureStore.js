@@ -1,11 +1,11 @@
 import { createStore, combineReducers } from "redux";
 
 //Reducers
-import temp from "../reducers/temp";
+import food from "../reducers/food";
 
 export default () => {
   const store = createStore(
-    combineReducers({ temp }),
+    combineReducers({ food }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
   console.log(store.getState());

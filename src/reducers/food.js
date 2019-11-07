@@ -1,8 +1,8 @@
 import {} from "../actions/actionTypes";
 
-const DefaultState = {};
+const FoodDefaultState = [];
 
-export default (state = DefaultState, action) => {
+export default (state = FoodDefaultState, action) => {
   switch (action.type) {
     default:
       return state;
