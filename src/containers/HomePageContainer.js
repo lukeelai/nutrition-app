@@ -17,7 +17,7 @@ class HomePageContainer extends React.Component {
   foodSearch = e => {
     const api_key = process.env.REACT_APP_FOOD_API_KEY;
     const uri = `/fdc/v1/search/?${api_key}`;
-    let data = `{"generalSearchInput":"${e.target.value}"}`;
+    let data = `{"generalSearchInput":"${e.target.value}","pageNumber":${1}}`;
     const config = {
       headers: { "Content-Type": "application/json" },
       params: { api_key: api_key }
