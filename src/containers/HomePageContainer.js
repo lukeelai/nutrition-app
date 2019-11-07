@@ -2,6 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
+//Actions
+import { addSearch } from "../actions/search";
+
 //Components
 import HomePage from "../components/HomePage";
 
@@ -28,7 +31,7 @@ class HomePageContainer extends React.Component {
       axios
         .post(uri, data, config)
         .then(response => {
-          console.log(response.data);
+          this.props.addSearch(response.data);
         })
         .catch(error => {
           console.log(error);
@@ -43,7 +46,10 @@ class HomePageContainer extends React.Component {
 }
 
 const MapStateToProps = state => {
-  return { temp: state.temp };
+  return { search: state.search };
 };
 
-export default connect(MapStateToProps)(HomePageContainer);
+export default connect(
+  MapStateToProps,
+  { addSearch }
+)(HomePageContainer);
