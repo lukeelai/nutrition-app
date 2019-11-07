@@ -13,16 +13,22 @@ class HomePageContainer extends React.Component {
 
   foodSearch = e => {
     const api_key = process.env.REACT_APP_FOOD_API_KEY;
-    const uri = `https://api.nal.usda.gov/fdc/v1/search?api_key=${api_key}`;
-    var data = `{"generalSearchInput":"${e.target.value}"}`;
-    const headers = { "Content-Type": "application/json" };
+    const uri = `/fdc/v1/search/?${api_key}`;
+    let data = `{"generalSearchInput":"${e.target.value}"}`;
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      params: { api_key: api_key }
+    };
     if (e.key === "Enter" && e.target.value.length > 0) {
       e.preventDefault();
-      console.log(e.target.value);
+      axios.interceptors.request.use(request => {
+        console.log("Starting Request", request);
+        return request;
+      });
       axios
-        .post(uri, data, { headers: headers })
+        .post(uri, data, config)
         .then(response => {
-          console.log(response);
+          console.log(response.data);
         })
         .catch(error => {
           console.log(error);
