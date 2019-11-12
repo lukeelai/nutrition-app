@@ -50,22 +50,18 @@ const HomePage = props => {
 };
 
 const renderTableData = props => {
-  return (
-    props.foods
-      // .filter(food => food.brandOwner !== undefined)
-      .map(food => {
-        const { fdcId, brandOwner, description } = food;
-        return (
-          <tr key={fdcId}>
-            <td>{brandOwner}</td>
-            <td>{description}</td>
-            <td>
-              <Button color="primary">More Info</Button>
-            </td>
-          </tr>
-        );
-      })
-  );
+  return props.foods.map(food => {
+    const { fdcId, brandOwner, description } = food;
+    return (
+      <tr key={fdcId}>
+        <td>{brandOwner}</td>
+        <td>{description}</td>
+        <td>
+          <Button color="primary">More Info</Button>
+        </td>
+      </tr>
+    );
+  });
 };
 
 const renderPagination = props => {
