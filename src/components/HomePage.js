@@ -21,7 +21,20 @@ const HomePage = props => {
         </p>
         <div className="col-md-auto btn-toolbar ml-auto mr-3">
           <div className="btn-group">
-            {props.search.totalPages && renderPagination(props.search)}
+            {props.search.totalPages && props.search.currentPage !== 1 && (
+              <Button>Prev</Button>
+            )}
+            {props.search.totalPages && renderFirstPagination(props.search)}
+            {props.search.totalPages && props.search.totalPages >= 5 && (
+              <Button className="btn btn-lg" disabled>
+                . . .
+              </Button>
+            )}
+            {props.search.totalPages && renderLastPagination(props.search)}
+            {props.search.totalPages &&
+              props.search.currentPage !== props.search.totalPages && (
+                <Button>Next</Button>
+              )}
           </div>
         </div>
       </div>
@@ -43,7 +56,20 @@ const HomePage = props => {
         </tbody>
       </Table>
       <div className="row ml-1 btn-group">
-        {props.search.totalPages && renderPagination(props.search)}
+        {props.search.totalPages && props.search.currentPage !== 1 && (
+          <Button>Prev</Button>
+        )}
+        {props.search.totalPages && renderFirstPagination(props.search)}
+        {props.search.totalPages && props.search.totalPages >= 5 && (
+          <Button className="btn btn-lg" disabled>
+            . . .
+          </Button>
+        )}
+        {props.search.totalPages && renderLastPagination(props.search)}
+        {props.search.totalPages &&
+          props.search.currentPage !== props.search.totalPages && (
+            <Button>Next</Button>
+          )}
       </div>
     </div>
   );
@@ -64,9 +90,9 @@ const renderTableData = props => {
   });
 };
 
-const renderPagination = props => {
+const renderFirstPagination = props => {
   const pageNumbers = [...Array(props.totalPages + 1).keys()].slice(1);
-  return pageNumbers.map(page => {
+  return pageNumbers.slice(props.currentPage - 1, props.endIndex).map(page => {
     return (
       <Button
         key={page}
@@ -79,4 +105,25 @@ const renderPagination = props => {
     );
   });
 };
+
+const renderLastPagination = props => {
+  const pageNumbers = [...Array(props.totalPages + 1).keys()].slice(1);
+  if (pageNumbers.length > 5) {
+    return pageNumbers
+      .slice(props.totalPages - 2, props.totalPages)
+      .map(page => {
+        return (
+          <Button
+            key={page}
+            onClick={() => {
+              console.log(page);
+            }}
+          >
+            {page}
+          </Button>
+        );
+      });
+  }
+};
+
 export default HomePage;

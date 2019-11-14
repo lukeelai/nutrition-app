@@ -5,10 +5,12 @@ const SearchDefaultState = {};
 export default (state = SearchDefaultState, action) => {
   switch (action.type) {
     case ADD_SEARCH:
-      console.log(action.search.foods);
       return {
         ...action.search,
-        foods: action.search.foods.filter(food => food.brandOwner !== undefined)
+        foods: action.search.foods.filter(
+          food => food.brandOwner !== undefined
+        ),
+        endIndex: action.search.totalPages >= 5 ? 3 : 5
       };
     case RETRIEVE_FOOD:
       return { ...action.search };
