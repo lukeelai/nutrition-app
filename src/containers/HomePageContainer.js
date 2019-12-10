@@ -1,14 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import moment from "moment";
 
 //Actions
 import { addSearch } from "../actions/search";
 
 //Components
-import Calendar from "../components/Calendar";
 import HomePage from "../components/HomePage";
+
+//Containers
+import CalendarContainer from "../containers/CalendarContainer";
 
 class HomePageContainer extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class HomePageContainer extends React.Component {
   render() {
     return (
       <div>
-        <Calendar />
+        <CalendarContainer />
         <HomePage {...this.props} foodSearch={this.foodSearch} />
       </div>
     );
