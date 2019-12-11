@@ -10,6 +10,10 @@ import Calendar from "../components/Calendar";
 import MenuItem from "../components/MenuItem";
 
 class CalendarContainer extends React.Component {
+  //   componentWillReceiveProps(nextProps) {
+  //     if (this.props.menu !== nextProps.menu) this.onSelect(nextProps.menu);
+  //   }
+
   getDates = () => {
     let startOfMonth = moment().startOf("month");
     const endOfMonth = moment().endOf("month");
@@ -38,13 +42,13 @@ class CalendarContainer extends React.Component {
   };
 
   onSelect = key => {
-    console.log(key);
     this.props.updateSelect(key);
   };
 
   render() {
     return (
       <Calendar
+        {...this.props}
         getDates={this.getDates}
         getMenu={this.getMenu}
         onSelect={this.onSelect}

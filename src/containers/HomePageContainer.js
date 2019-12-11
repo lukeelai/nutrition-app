@@ -1,9 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import { Button } from "reactstrap";
+import moment from "moment";
 
 //Actions
 import { addSearch } from "../actions/search";
+import { updateSelect } from "../actions/menu";
 
 //Components
 import HomePage from "../components/HomePage";
@@ -33,9 +36,16 @@ class HomePageContainer extends React.Component {
     }
   };
 
+  onClick = () => {
+    this.props.updateSelect(moment().format("L"));
+  };
+
   render() {
     return (
       <div>
+        <Button>Prev Month</Button>
+        <Button onClick={this.onClick}>Today</Button>
+        <Button>Next Month</Button>
         <CalendarContainer />
         <HomePage {...this.props} foodSearch={this.foodSearch} />
       </div>
@@ -44,7 +54,9 @@ class HomePageContainer extends React.Component {
 }
 
 const MapStateToProps = state => {
-  return { search: state.search };
+  return { search: state.search, menu: state.menu };
 };
 
-export default connect(MapStateToProps, { addSearch })(HomePageContainer);
+export default connect(MapStateToProps, { addSearch, updateSelect })(
+  HomePageContainer
+);

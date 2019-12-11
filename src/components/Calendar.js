@@ -1,6 +1,5 @@
 import React from "react";
 import ScrollMenu from "react-horizontal-scrolling-menu";
-import moment from "moment";
 
 //Components
 import Arrow from "./Arrow";
@@ -13,8 +12,9 @@ export const Calendar = props => {
       data={props.getMenu(props.getDates())}
       arrowLeft={ArrowLeft}
       arrowRight={ArrowRight}
-      selected={moment().format("L")}
+      selected={props.menu}
       onSelect={props.onSelect}
+      scrollToSelected={true}
     />
   );
 };
