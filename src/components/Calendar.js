@@ -12,7 +12,7 @@ export const Calendar = props => {
       data={props.getMenu(props.getDates())}
       arrowLeft={ArrowLeft}
       arrowRight={ArrowRight}
-      selected={props.menu}
+      selected={props.menu.date}
       onSelect={props.onSelect}
       scrollToSelected={true}
     />

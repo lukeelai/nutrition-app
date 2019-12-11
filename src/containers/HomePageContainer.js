@@ -6,7 +6,7 @@ import moment from "moment";
 
 //Actions
 import { addSearch } from "../actions/search";
-import { updateSelect } from "../actions/menu";
+import { updateSelect, updateMonth } from "../actions/menu";
 
 //Components
 import HomePage from "../components/HomePage";
@@ -36,16 +36,35 @@ class HomePageContainer extends React.Component {
     }
   };
 
-  onClick = () => {
+  onClickToday = () => {
+    if (moment().format("M") !== this.props.menu.startOfMonth.format("M"))
+      this.props.updateMonth(
+        moment().startOf("month"),
+        moment().endOf("month")
+      );
     this.props.updateSelect(moment().format("L"));
+  };
+
+  onClickPrev = () => {
+    this.props.updateMonth(
+      this.props.menu.startOfMonth.startOf("month").subtract(1, "months"),
+      this.props.menu.endOfMonth.endOf("month").subtract(1, "months")
+    );
+  };
+
+  onClickNext = () => {
+    this.props.updateMonth(
+      this.props.menu.startOfMonth.startOf("month").add(1, "months"),
+      this.props.menu.endOfMonth.endOf("month").add(1, "months")
+    );
   };
 
   render() {
     return (
       <div>
-        <Button>Prev Month</Button>
-        <Button onClick={this.onClick}>Today</Button>
-        <Button>Next Month</Button>
+        <Button onClick={this.onClickPrev}>Prev Month</Button>
+        <Button onClick={this.onClickToday}>Today</Button>
+        <Button onClick={this.onClickNext}>Next Month</Button>
         <CalendarContainer />
         <HomePage {...this.props} foodSearch={this.foodSearch} />
       </div>
@@ -57,6 +76,8 @@ const MapStateToProps = state => {
   return { search: state.search, menu: state.menu };
 };
 
-export default connect(MapStateToProps, { addSearch, updateSelect })(
-  HomePageContainer
-);
+export default connect(MapStateToProps, {
+  addSearch,
+  updateSelect,
+  updateMonth
+})(HomePageContainer);
