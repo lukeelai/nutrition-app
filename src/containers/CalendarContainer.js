@@ -4,12 +4,9 @@ import moment from "moment";
 
 //Components
 import Calendar from "../components/Calendar";
+import MenuItem from "../components/MenuItem";
 
 class CalendarContainer extends React.Component {
-  componentDidMount = () => {
-    this.getDates();
-  };
-
   getDates = () => {
     let startOfMonth = moment().startOf("month");
     const endOfMonth = moment().endOf("month");
@@ -24,13 +21,36 @@ class CalendarContainer extends React.Component {
     return dateArray;
   };
 
+  getMenu = dateArray => {
+    return dateArray.map(date => {
+      return (
+        <MenuItem
+          day={date.day}
+          text={date.date}
+          key={date.date}
+          selected={moment().format("L")}
+        />
+      );
+    });
+  };
+
+  onSelect = key => {
+    console.log(key);
+  };
+
   render() {
-    return <Calendar getDates={this.getDates} />;
+    return (
+      <Calendar
+        getDates={this.getDates}
+        getMenu={this.getMenu}
+        onSelect={this.onSelect}
+      />
+    );
   }
 }
 
-const MapStateToProps = state => {
-  return { search: state.search };
-};
+// const MapStateToProps = state => {
+//   return { search: state.search };
+// };
 
-export default connect(MapStateToProps)(CalendarContainer);
+export default connect()(CalendarContainer);
