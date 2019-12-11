@@ -6,4 +6,4 @@ export const ADD_SEARCH = "ADD_SEARCH";
 export const RETRIEVE_FOOD = "RETRIEVE_FOOD";
 
 //menu
-export const ADD_SELECT = "ADD_SELECT";
+export const UPDATE_SELECT = "UPDATE_SELECT";

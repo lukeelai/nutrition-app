@@ -2,6 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 
+//Actions
+import { updateSelect } from "../actions/menu";
+
 //Components
 import Calendar from "../components/Calendar";
 import MenuItem from "../components/MenuItem";
@@ -28,7 +31,7 @@ class CalendarContainer extends React.Component {
           day={date.day}
           text={date.date}
           key={date.date}
-          selected={moment().format("L")}
+          selected={this.props.menu}
         />
       );
     });
@@ -36,6 +39,7 @@ class CalendarContainer extends React.Component {
 
   onSelect = key => {
     console.log(key);
+    this.props.updateSelect(key);
   };
 
   render() {
@@ -49,8 +53,8 @@ class CalendarContainer extends React.Component {
   }
 }
 
-// const MapStateToProps = state => {
-//   return { search: state.search };
-// };
+const MapStateToProps = state => {
+  return { menu: state.menu };
+};
 
-export default connect()(CalendarContainer);
+export default connect(MapStateToProps, { updateSelect })(CalendarContainer);

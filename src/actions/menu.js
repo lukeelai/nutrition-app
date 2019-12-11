@@ -1,6 +1,6 @@
-import { ADD_SELECT } from "./actionTypes";
+import { UPDATE_SELECT } from "./actionTypes";
 
-export const addSelect = date => ({
-  type: ADD_SELECT,
+export const updateSelect = date => ({
+  type: UPDATE_SELECT,
   date
 });
