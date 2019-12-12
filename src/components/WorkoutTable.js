@@ -1,28 +1,31 @@
 import React from "react";
-import { Table, Input, Label } from "reactstrap";
+import { Table, Input, Button } from "reactstrap";
 
 export const WorkoutTable = props => {
+  console.log(props);
   return (
-    <Table striped responsive>
+    <Table striped>
       <thead>
         <tr>
-          <th></th>
+          <th>
+            <Button>Add Row</Button>
+          </th>
           <th>Weight (lb)</th>
           <th>Last Rep</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>Squat - 5x3</th>
+          <th>{props.workout[0].T1} - 5x3</th>
           <td>
             <Input
-              value="90"
+              value={props.workout[0].T1_Weight}
               onClick={props.onClickEdit}
               id="t1-weight"
-              plaintext
+              plaintext={props.workout[0].plaintext}
             />
           </td>
-          <td>5</td>
+          <td>{props.workout[0].T1_Last}</td>
         </tr>
         <tr>
           <th>Bench - 3x10</th>

@@ -12,3 +12,4 @@ export const UPDATE_MONTH = "UPDATE_MONTH";
 //workout
 export const ADD_WORKOUT = "ADD_WORKOUT";
 export const UPDATE_WORKOUT = "UPDATE_WORKOUT";
+export const TOGGLE_TEXT = "TOGGLE_TEXT";
