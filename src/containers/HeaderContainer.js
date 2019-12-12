@@ -41,9 +41,11 @@ class HeaderContainer extends React.Component {
       <div>
         <Header />
         <CalendarContainer />
-        <Button onClick={this.onClickPrev}>Prev Month</Button>
-        <Button onClick={this.onClickToday}>Today</Button>
-        <Button onClick={this.onClickNext}>Next Month</Button>
+        <div className="float-right">
+          <Button onClick={this.onClickPrev}>Prev Month</Button>
+          <Button onClick={this.onClickToday}>Today</Button>
+          <Button onClick={this.onClickNext}>Next Month</Button>
+        </div>
       </div>
     );
   }
