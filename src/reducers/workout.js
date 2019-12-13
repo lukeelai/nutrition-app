@@ -25,9 +25,8 @@ export default (state = MenuDefaultState, action) => {
     case ADD_WORKOUT:
       return [...state, action.workout];
     case UPDATE_WORKOUT:
-      return state;
+      return [{ ...state[0], T1_Weight: action.update }];
     case TOGGLE_TEXT:
-      console.log(!state[0].plaintext);
       return [{ ...state[0], plaintext: !state[0].plaintext }];
     default:
       return state;

@@ -2,7 +2,6 @@ import React from "react";
 import { Table, Input, Button } from "reactstrap";
 
 export const WorkoutTable = props => {
-  console.log(props);
   return (
     <Table striped>
       <thead>
@@ -16,13 +15,16 @@ export const WorkoutTable = props => {
       </thead>
       <tbody>
         <tr>
-          <th>{props.workout[0].T1} - 5x3</th>
+          <th>{props.workout[0].T1 ? props.workout[0].T1 : "T1"} - 5x3</th>
           <td>
             <Input
               value={props.workout[0].T1_Weight}
-              onClick={props.onClickEdit}
               id="t1-weight"
               plaintext={props.workout[0].plaintext}
+              disabled={false}
+              onClick={props.onClickEdit}
+              onChange={props.onChangeWeight}
+              onKeyDown={props.onKeyDown}
             />
           </td>
           <td>{props.workout[0].T1_Last}</td>
