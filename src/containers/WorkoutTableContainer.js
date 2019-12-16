@@ -3,9 +3,13 @@ import { connect } from "react-redux";
 
 //Actions
 import { toggleText, updateWorkout, toggleReadOnly } from "../actions/workout";
+import { toggleModal } from "../actions/workoutModal";
 
 //Components
 import WorkoutTable from "../components/WorkoutTable";
+
+//Containers
+import WorkoutModalContainer from "../containers/WorkoutModalContainer";
 
 class WorkoutTableContainer extends React.Component {
   onClickEdit = e => {
@@ -16,6 +20,7 @@ class WorkoutTableContainer extends React.Component {
 
   onClickNewRow = e => {
     console.log("add row");
+    this.props.toggleModal(e.target.value);
   };
 
   onChangeWeight = e => {
@@ -31,13 +36,17 @@ class WorkoutTableContainer extends React.Component {
 
   render() {
     return (
-      <WorkoutTable
-        onClickEdit={this.onClickEdit}
-        onChangeWeight={this.onChangeWeight}
-        onKeyDown={this.onKeyDown}
-        onClickDisable={this.onClickDisable}
-        {...this.props}
-      />
+      <div>
+        <WorkoutTable
+          onClickEdit={this.onClickEdit}
+          onChangeWeight={this.onChangeWeight}
+          onKeyDown={this.onKeyDown}
+          onClickDisable={this.onClickDisable}
+          onClickNewRow={this.onClickNewRow}
+          {...this.props}
+        />
+        <WorkoutModalContainer />
+      </div>
     );
   }
 }
@@ -49,5 +58,6 @@ const MapStateToProps = state => {
 export default connect(MapStateToProps, {
   toggleText,
   updateWorkout,
-  toggleReadOnly
+  toggleReadOnly,
+  toggleModal
 })(WorkoutTableContainer);

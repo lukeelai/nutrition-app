@@ -7,7 +7,7 @@ export const WorkoutTable = props => {
       <thead>
         <tr>
           <th>
-            <Button>Add Row</Button>
+            <Button onClick={props.onClickNewRow}>Add Row</Button>
           </th>
           <th>Weight (lb)</th>
           <th>Last Rep</th>
