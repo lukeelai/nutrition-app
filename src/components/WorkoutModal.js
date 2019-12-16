@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Modal,
   ModalHeader,
@@ -13,8 +13,8 @@ import {
 
 export const WorkoutModal = props => {
   return (
-    <Modal isOpen={props.workoutModal.modal} toggle={props.workoutModal.modal}>
-      <ModalHeader toggle={props.workoutModal.modal}>Modal title</ModalHeader>
+    <Modal isOpen={props.workoutModal.modal} toggle={props.toggleModal}>
+      <ModalHeader toggle={props.toggleModal}>Modal title</ModalHeader>
       <ModalBody>
         <Form>
           <FormGroup>
@@ -38,10 +38,10 @@ export const WorkoutModal = props => {
         </Form>
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" onClick={props.workoutModal.modal}>
-          Do Something
+        <Button color="primary" onClick={props.toggleModal}>
+          Add
         </Button>
-        <Button color="secondary" onClick={props.workoutModal.modal}>
+        <Button color="secondary" onClick={props.toggleModal}>
           Cancel
         </Button>
       </ModalFooter>
