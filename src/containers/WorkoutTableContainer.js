@@ -19,7 +19,6 @@ class WorkoutTableContainer extends React.Component {
   };
 
   onClickNewRow = e => {
-    console.log("add row");
     this.props.toggleModal(e.target.value);
   };
 

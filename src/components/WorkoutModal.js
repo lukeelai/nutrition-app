@@ -20,7 +20,7 @@ export const WorkoutModal = props => {
           <FormGroup>
             <Label for="exampleEmail">Email</Label>
             <Input
-              type="email"
+              type="text"
               name="email"
               id="exampleEmail"
               placeholder="with a placeholder"
@@ -29,7 +29,7 @@ export const WorkoutModal = props => {
           <FormGroup>
             <Label for="examplePassword">Password</Label>
             <Input
-              type="password"
+              type="text"
               name="password"
               id="examplePassword"
               placeholder="password placeholder"

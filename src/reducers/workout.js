@@ -5,7 +5,7 @@ import {
   TOGGLE_READONLY
 } from "../actions/actionTypes";
 
-const MenuDefaultState = [
+const WorkoutDefaultState = [
   {
     date: "12/12/2019",
     plaintext: true,
@@ -22,7 +22,25 @@ const MenuDefaultState = [
   }
 ];
 
-export default (state = MenuDefaultState, action) => {
+const testState = [
+  {
+    12162019: {
+      plaintext: true,
+      readonly: false,
+      T1: "Squat",
+      T1_Weight: "90",
+      T1_Last: "5",
+      T2: "Bench",
+      T2_Weight: "37.5",
+      T2_Last: "Fail",
+      T3: "Chinups",
+      T3_Weight: "85",
+      T3_Last: "20"
+    }
+  }
+];
+
+export default (state = WorkoutDefaultState, action) => {
   switch (action.type) {
     case ADD_WORKOUT:
       return [...state, action.workout];
