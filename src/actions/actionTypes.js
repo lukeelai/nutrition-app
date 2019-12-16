@@ -13,3 +13,4 @@ export const UPDATE_MONTH = "UPDATE_MONTH";
 export const ADD_WORKOUT = "ADD_WORKOUT";
 export const UPDATE_WORKOUT = "UPDATE_WORKOUT";
 export const TOGGLE_TEXT = "TOGGLE_TEXT";
+export const TOGGLE_READONLY = "TOGGLE_READONLY";

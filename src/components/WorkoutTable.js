@@ -21,10 +21,10 @@ export const WorkoutTable = props => {
               value={props.workout[0].T1_Weight}
               id="t1-weight"
               plaintext={props.workout[0].plaintext}
-              disabled={false}
               onClick={props.onClickEdit}
               onChange={props.onChangeWeight}
               onKeyDown={props.onKeyDown}
+              readOnly={props.workout[0].readonly}
             />
           </td>
           <td>{props.workout[0].T1_Last}</td>
