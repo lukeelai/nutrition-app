@@ -26,7 +26,7 @@ const WorkoutDefaultState = [
 // readonly: false
 const testState = [
   {
-    12162019: {
+    12182019: {
       T1: ["Squat", "90", "5", true, false],
       T2: ["Bench", "37.5", "Fail", true, false],
       T3: ["Chinups", "85", "20", true, false]

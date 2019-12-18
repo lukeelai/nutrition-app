@@ -5,7 +5,6 @@ import { Table, Button } from "reactstrap";
 import WorkoutTableData from "./WorkoutTableData";
 
 export const WorkoutTable = props => {
-  console.log(props.workout);
   return (
     <Table striped>
       <thead>
@@ -21,6 +20,7 @@ export const WorkoutTable = props => {
         return (
           <WorkoutTableData
             {...workout}
+            date={props.date}
             onClick={props.onClickEdit}
             onChange={props.onChangeWeight}
             onKeyDown={props.onKeyDown}

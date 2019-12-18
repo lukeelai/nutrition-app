@@ -2,34 +2,31 @@ import React from "react";
 import { Input } from "reactstrap";
 
 export const WorkoutTableData = props => {
-  console.log(props[12162019].T1);
+  const date = props.date.replace(/\//g, "");
+  console.log(props[date]);
   return (
     <tbody>
-      <tr>
-        <th>{props[12162019].T1 ? props[12162019].T1[0] : "T1"} - 5x3</th>
-        <td>
-          <Input
-            value={props[12162019].T1[1]}
-            id="t1-weight"
-            plaintext={props[12162019].T1[3]}
-            onClick={props.onClick}
-            onChange={props.onChange}
-            onKeyDown={props.onKeyDown}
-            readOnly={props[12162019].T1[4]}
-          />
-        </td>
-        <td>{props[12162019].T1[2]}</td>
-      </tr>
-      <tr>
-        <th>Bench - 3x10</th>
-        <td id="t2">37.5</td>
-        <td>Fail</td>
-      </tr>
-      <tr>
-        <th>Accessory - 3x10+</th>
-        <td id="t3">85</td>
-        <td>20</td>
-      </tr>
+      {Object.keys(props[12162019]).map(key => {
+        return (
+          <tr>
+            <th>
+              {props[12162019][key] ? props[12162019][key][0] : "T1"} - 5 x 3
+            </th>
+            <td>
+              <Input
+                value={props[12162019][key][1]}
+                id={key + "-weight"}
+                plaintext={props[12162019][key][3]}
+                onClick={props.onClick}
+                onChange={props.onChange}
+                onKeyDown={props.onKeyDown}
+                readOnly={props[12162019][key][4]}
+              />
+            </td>
+            <td>{props[12162019][key][2]}</td>
+          </tr>
+        );
+      })}
     </tbody>
   );
 };

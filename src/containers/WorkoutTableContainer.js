@@ -51,7 +51,7 @@ class WorkoutTableContainer extends React.Component {
 }
 
 const MapStateToProps = state => {
-  return { workout: state.workout };
+  return { workout: state.workout, date: state.menu.date };
 };
 
 export default connect(MapStateToProps, {
