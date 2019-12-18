@@ -12,17 +12,16 @@ import {
 } from "reactstrap";
 
 export const WorkoutModal = props => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
-
+  const date = props.date.replace(/\//g, "");
+  let data = { [date]: {} };
   return (
     <Modal isOpen={props.workoutModal.modal} toggle={props.toggleModal}>
       <ModalHeader toggle={props.toggleModal}>Modal title</ModalHeader>
       <ModalBody>
-        <Form>
+        <Form onSubmit={props.onSubmit}>
           <FormGroup>
-            <Label for="exampleSelect">Workout</Label>
-            <Input type="select" name="select" id="exampleSelect">
+            <Label for="workoutSelect">Workout</Label>
+            <Input type="select" name="select" id="workoutSelect">
               <option>T1</option>
               <option>T2</option>
               <option>T3</option>
@@ -40,7 +39,8 @@ export const WorkoutModal = props => {
           <FormGroup>
             <Label for="weightAmount">Weight (lbs)</Label>
             <Input
-              type="text"
+              type="number"
+              step="0.1"
               name="weight"
               id="weightAmount"
               placeholder="20 lbs..."
@@ -50,16 +50,9 @@ export const WorkoutModal = props => {
             <Label for="repAmount">Last Set</Label>
             <Input type="text" name="rep" id="repAmount" placeholder="5 reps" />
           </FormGroup>
+          <Button>Submit</Button>
         </Form>
       </ModalBody>
-      <ModalFooter>
-        <Button color="primary" onClick={props.toggleModal}>
-          Add
-        </Button>
-        <Button color="secondary" onClick={props.toggleModal}>
-          Cancel
-        </Button>
-      </ModalFooter>
     </Modal>
   );
 };
