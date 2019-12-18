@@ -3,7 +3,6 @@ import { Input } from "reactstrap";
 
 export const WorkoutTableData = props => {
   const date = props.date.replace(/\//g, "");
-  console.log();
   if (props[date])
     return (
       <tbody>
