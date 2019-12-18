@@ -10,7 +10,14 @@ export const WorkoutTableData = props => {
         {Object.keys(props[date]).map(key => {
           return (
             <tr>
-              <th>{props[date][key] ? props[date][key][0] : "T1"} - 5 x 3</th>
+              <th>
+                {props[date][key] ? props[date][key][0] : "T1"} -
+                {key === "T1"
+                  ? " 5 x 3"
+                  : key === "T2"
+                  ? " 3 x 10"
+                  : " 3 x 15+"}
+              </th>
               <td>
                 <Input
                   value={props[date][key][1]}
