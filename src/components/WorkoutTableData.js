@@ -12,8 +12,8 @@ export const WorkoutTableData = props => {
             value={props.T1_Weight}
             id="t1-weight"
             plaintext={props.plaintext}
-            onClick={props.onClickEdit}
-            onChange={props.onChangeWeight}
+            onClick={props.onClick}
+            onChange={props.onChange}
             onKeyDown={props.onKeyDown}
             readOnly={props.readonly}
           />

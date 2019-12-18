@@ -17,7 +17,14 @@ export const WorkoutTable = props => {
         </tr>
       </thead>
       {props.workout.map(workout => {
-        return <WorkoutTableData {...workout} />;
+        return (
+          <WorkoutTableData
+            {...workout}
+            onClick={props.onClickEdit}
+            onChange={props.onChangeWeight}
+            onKeyDown={props.onKeyDown}
+          />
+        );
       })}
     </Table>
   );
