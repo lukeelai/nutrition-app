@@ -13,33 +13,37 @@ export const WorkoutTable = props => {
           <th>Last Rep</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th>{props.workout[0].T1 ? props.workout[0].T1 : "T1"} - 5x3</th>
-          <td>
-            <Input
-              value={props.workout[0].T1_Weight}
-              id="t1-weight"
-              plaintext={props.workout[0].plaintext}
-              onClick={props.onClickEdit}
-              onChange={props.onChangeWeight}
-              onKeyDown={props.onKeyDown}
-              readOnly={props.workout[0].readonly}
-            />
-          </td>
-          <td>{props.workout[0].T1_Last}</td>
-        </tr>
-        <tr>
-          <th>Bench - 3x10</th>
-          <td id="t2">37.5</td>
-          <td>Fail</td>
-        </tr>
-        <tr>
-          <th>Accessory - 3x10+</th>
-          <td id="t3">85</td>
-          <td>20</td>
-        </tr>
-      </tbody>
+      {props.workout.map(workout => {
+        return (
+          <tbody>
+            <tr>
+              <th>{workout.T1 ? workout.T1 : "T1"} - 5x3</th>
+              <td>
+                <Input
+                  value={workout.T1_Weight}
+                  id="t1-weight"
+                  plaintext={workout.plaintext}
+                  onClick={props.onClickEdit}
+                  onChange={props.onChangeWeight}
+                  onKeyDown={props.onKeyDown}
+                  readOnly={workout.readonly}
+                />
+              </td>
+              <td>{workout.T1_Last}</td>
+            </tr>
+            <tr>
+              <th>Bench - 3x10</th>
+              <td id="t2">37.5</td>
+              <td>Fail</td>
+            </tr>
+            <tr>
+              <th>Accessory - 3x10+</th>
+              <td id="t3">85</td>
+              <td>20</td>
+            </tr>
+          </tbody>
+        );
+      })}
     </Table>
   );
 };
