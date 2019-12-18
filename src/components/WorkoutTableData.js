@@ -2,23 +2,23 @@ import React from "react";
 import { Input } from "reactstrap";
 
 export const WorkoutTableData = props => {
-  console.log(props);
+  console.log(props[12162019].T1);
   return (
     <tbody>
       <tr>
-        <th>{props.T1 ? props.T1 : "T1"} - 5x3</th>
+        <th>{props[12162019].T1 ? props[12162019].T1[0] : "T1"} - 5x3</th>
         <td>
           <Input
-            value={props.T1_Weight}
+            value={props[12162019].T1[1]}
             id="t1-weight"
-            plaintext={props.plaintext}
+            plaintext={props[12162019].T1[3]}
             onClick={props.onClick}
             onChange={props.onChange}
             onKeyDown={props.onKeyDown}
-            readOnly={props.readonly}
+            readOnly={props[12162019].T1[4]}
           />
         </td>
-        <td>{props.T1_Last}</td>
+        <td>{props[12162019].T1[2]}</td>
       </tr>
       <tr>
         <th>Bench - 3x10</th>

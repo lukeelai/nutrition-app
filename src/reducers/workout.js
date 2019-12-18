@@ -22,25 +22,19 @@ const WorkoutDefaultState = [
   }
 ];
 
+// plaintext: true
+// readonly: false
 const testState = [
   {
     12162019: {
-      plaintext: true,
-      readonly: false,
-      T1: "Squat",
-      T1_Weight: "90",
-      T1_Last: "5",
-      T2: "Bench",
-      T2_Weight: "37.5",
-      T2_Last: "Fail",
-      T3: "Chinups",
-      T3_Weight: "85",
-      T3_Last: "20"
+      T1: ["Squat", "90", "5", true, false],
+      T2: ["Bench", "37.5", "Fail", true, false],
+      T3: ["Chinups", "85", "20", true, false]
     }
   }
 ];
 
-export default (state = WorkoutDefaultState, action) => {
+export default (state = testState, action) => {
   switch (action.type) {
     case ADD_WORKOUT:
       return [...state, action.workout];

@@ -5,6 +5,7 @@ import { Table, Button } from "reactstrap";
 import WorkoutTableData from "./WorkoutTableData";
 
 export const WorkoutTable = props => {
+  console.log(props.workout);
   return (
     <Table striped>
       <thead>
