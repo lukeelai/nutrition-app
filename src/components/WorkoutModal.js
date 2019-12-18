@@ -12,8 +12,6 @@ import {
 } from "reactstrap";
 
 export const WorkoutModal = props => {
-  const date = props.date.replace(/\//g, "");
-  let data = { [date]: {} };
   return (
     <Modal isOpen={props.workoutModal.modal} toggle={props.toggleModal}>
       <ModalHeader toggle={props.toggleModal}>Modal title</ModalHeader>

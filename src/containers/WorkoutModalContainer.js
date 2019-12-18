@@ -10,7 +10,9 @@ import WorkoutModal from "../components/WorkoutModal";
 class WorkoutModalContainer extends React.Component {
   onSubmit = e => {
     e.preventDefault();
+    const date = this.props.date.replace(/\//g, "");
     console.log(
+      date,
       e.target["workoutSelect"].value,
       e.target["workoutName"].value,
       e.target["weightAmount"].value,
